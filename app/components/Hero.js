@@ -1,6 +1,24 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import Image from "next/image";
 
 export default function Hero() {
+  const [garderie, setGarderie] = useState(null);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/api/garderie")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          setGarderie(data.data);
+        }
+      })
+      .catch((err) => console.error("Erreur chargement garderie:", err));
+  }, []);
+
+  const stats = garderie?.statistiques;
+
   return (
     <section className="hero-section" id="accueil">
       <div className="container">
@@ -17,9 +35,15 @@ export default function Hero() {
             </h1>
 
             <p className="hero-description">
-              Chez <strong>Les Petits Explorateurs</strong>, nous offrons un
-              environnement sûr, stimulant et bienveillant où chaque enfant
-              peut grandir, apprendre et s&apos;épanouir à son rythme.
+              {garderie ? (
+                garderie.description
+              ) : (
+                <>
+                  Chez <strong>Les Petits Explorateurs</strong>, nous offrons un
+                  environnement sûr, stimulant et bienveillant où chaque enfant
+                  peut grandir, apprendre et s&apos;épanouir à son rythme.
+                </>
+              )}
             </p>
 
             <div className="hero-buttons">
@@ -35,15 +59,21 @@ export default function Hero() {
 
             <div className="hero-stats">
               <div className="hero-stat-item">
-                <div className="hero-stat-number">150+</div>
+                <div className="hero-stat-number">
+                  {stats ? `${stats.enfantsInscrits}+` : "150+"}
+                </div>
                 <div className="hero-stat-label">Enfants inscrits</div>
               </div>
               <div className="hero-stat-item">
-                <div className="hero-stat-number">15</div>
+                <div className="hero-stat-number">
+                  {stats ? stats.educateurs : "15"}
+                </div>
                 <div className="hero-stat-label">Éducateurs</div>
               </div>
               <div className="hero-stat-item">
-                <div className="hero-stat-number">10</div>
+                <div className="hero-stat-number">
+                  {stats ? stats.anneesExperience : "10"}
+                </div>
                 <div className="hero-stat-label">Ans d&apos;expérience</div>
               </div>
             </div>
@@ -85,7 +115,9 @@ export default function Hero() {
                   <i className="bi bi-heart-fill"></i>
                 </div>
                 <div>
-                  <div className="floating-card-text">Satisfaction 98%</div>
+                  <div className="floating-card-text">
+                    Satisfaction {stats ? `${stats.tauxSatisfaction}%` : "98%"}
+                  </div>
                   <div className="floating-card-subtext">
                     Parents satisfaits
                   </div>

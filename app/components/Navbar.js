@@ -1,4 +1,23 @@
+"use client";
+
+import { useState, useEffect } from "react";
+
 export default function Navbar() {
+  const [garderie, setGarderie] = useState(null);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/api/garderie")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          setGarderie(data.data);
+        }
+      })
+      .catch((err) => console.error("Erreur chargement garderie:", err));
+  }, []);
+
+  const nomGarderie = garderie ? garderie.nom : "Les Petits Explorateurs";
+
   return (
     <nav className="navbar navbar-expand-lg navbar-garderie fixed-top" id="navbar">
       <div className="container">
@@ -6,7 +25,7 @@ export default function Navbar() {
           <div className="navbar-logo">
             <i className="bi bi-balloon-heart-fill"></i>
           </div>
-          <span className="navbar-brand-text">Les Petits Explorateurs</span>
+          <span className="navbar-brand-text">{nomGarderie}</span>
         </a>
 
         <button
