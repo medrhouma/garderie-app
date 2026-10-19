@@ -1,4 +1,33 @@
+"use client";
+
+import { useState, useEffect } from "react";
+
 export default function Services() {
+  const [services, setServices] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/api/services")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          setServices(data.data);
+        }
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Erreur chargement services:", err);
+        setLoading(false);
+      });
+  }, []);
+
+  // Mapping des couleurs pour les variantes de cartes
+  const colorMap = {
+    orange: { cardClass: "card-orange", iconClass: "bg-orange" },
+    teal: { cardClass: "card-teal", iconClass: "bg-teal" },
+    purple: { cardClass: "card-purple", iconClass: "bg-purple" },
+  };
+
   return (
     <section className="services-section" id="services">
       <div className="container">
@@ -17,98 +46,41 @@ export default function Services() {
           </p>
         </div>
 
-        <div className="row g-4">
-          {/* Service Card 1 */}
-          <div className="col-md-6 col-lg-4">
-            <div className="card service-card card-orange">
-              <div className="card-body">
-                <div className="service-icon-wrapper bg-orange">
-                  <i className="bi bi-book-half"></i>
-                </div>
-                <h3 className="card-title">Éveil Éducatif</h3>
-                <p className="card-text">
-                  Programme pédagogique stimulant adapté à chaque tranche
-                  d&apos;âge, favorisant la curiosité et l&apos;apprentissage
-                  par le jeu.
-                </p>
-                <ul className="service-features">
-                  <li>
-                    <i className="bi bi-check-circle-fill"></i>
-                    Ateliers créatifs quotidiens
-                  </li>
-                  <li>
-                    <i className="bi bi-check-circle-fill"></i>
-                    Initiation aux langues
-                  </li>
-                  <li>
-                    <i className="bi bi-check-circle-fill"></i>
-                    Développement cognitif
-                  </li>
-                </ul>
-              </div>
+        {loading ? (
+          <div className="text-center py-5">
+            <div className="spinner-border text-primary" role="status">
+              <span className="visually-hidden">Chargement...</span>
             </div>
+            <p className="mt-3 text-muted">Chargement des services...</p>
           </div>
-
-          {/* Service Card 2 */}
-          <div className="col-md-6 col-lg-4">
-            <div className="card service-card card-teal">
-              <div className="card-body">
-                <div className="service-icon-wrapper bg-teal">
-                  <i className="bi bi-people-fill"></i>
+        ) : (
+          <div className="row g-4">
+            {services.map((service) => {
+              const colors = colorMap[service.couleur] || colorMap.orange;
+              return (
+                <div className="col-md-6 col-lg-4" key={service.id}>
+                  <div className={`card service-card ${colors.cardClass}`}>
+                    <div className="card-body">
+                      <div className={`service-icon-wrapper ${colors.iconClass}`}>
+                        <i className={`bi ${service.icone}`}></i>
+                      </div>
+                      <h3 className="card-title">{service.titre}</h3>
+                      <p className="card-text">{service.description}</p>
+                      <ul className="service-features">
+                        {service.caracteristiques.map((feature, index) => (
+                          <li key={index}>
+                            <i className="bi bi-check-circle-fill"></i>
+                            {feature}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
                 </div>
-                <h3 className="card-title">Garde Flexible</h3>
-                <p className="card-text">
-                  Horaires adaptés à votre emploi du temps avec des options de
-                  garde à temps plein, partiel ou occasionnel.
-                </p>
-                <ul className="service-features">
-                  <li>
-                    <i className="bi bi-check-circle-fill"></i>
-                    Ouvert de 7h à 19h
-                  </li>
-                  <li>
-                    <i className="bi bi-check-circle-fill"></i>
-                    Formules personnalisées
-                  </li>
-                  <li>
-                    <i className="bi bi-check-circle-fill"></i>
-                    Accueil d&apos;urgence
-                  </li>
-                </ul>
-              </div>
-            </div>
+              );
+            })}
           </div>
-
-          {/* Service Card 3 */}
-          <div className="col-md-6 col-lg-4">
-            <div className="card service-card card-purple">
-              <div className="card-body">
-                <div className="service-icon-wrapper bg-purple">
-                  <i className="bi bi-emoji-smile-fill"></i>
-                </div>
-                <h3 className="card-title">Activités Ludiques</h3>
-                <p className="card-text">
-                  Un programme riche en activités artistiques, sportives et
-                  musicales pour développer les talents de chaque enfant.
-                </p>
-                <ul className="service-features">
-                  <li>
-                    <i className="bi bi-check-circle-fill"></i>
-                    Musique et danse
-                  </li>
-                  <li>
-                    <i className="bi bi-check-circle-fill"></i>
-                    Arts plastiques
-                  </li>
-                  <li>
-                    <i className="bi bi-check-circle-fill"></i>
-                    Jeux en plein air
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
+        )}
       </div>
     </section>
   );
