@@ -72,7 +72,7 @@ garderie-app/
 ### 1. Cloner le dépôt
 
 ```bash
-git clone https://github.com/<votre-username>/garderie-app.git
+git clone https://github.com/medrhouma/garderie-app.git
 cd garderie-app
 ```
 
