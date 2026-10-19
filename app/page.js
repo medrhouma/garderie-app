@@ -1,24 +1,19 @@
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Services from "./components/Services";
+import Activities from "./components/Activities";
+import Footer from "./components/Footer";
+import RegistrationModal from "./components/RegistrationModal";
 
 export default function Home() {
   return (
-    <>
+    <main>
       <Navbar />
       <Hero />
       <Services />
-
-      {/* Footer */}
-      <footer className="footer-garderie" id="contact">
-        <div className="container">
-          <p className="mb-0">
-            &copy; 2026 Garderie Les Petits Explorateurs — Tous droits réservés
-            | <a href="#">Mentions légales</a> |{" "}
-            <a href="#">Politique de confidentialité</a>
-          </p>
-        </div>
-      </footer>
-    </>
+      <Activities />
+      <Footer />
+      <RegistrationModal />
+    </main>
   );
 }

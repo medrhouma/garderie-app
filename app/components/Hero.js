@@ -20,113 +20,150 @@ export default function Hero() {
   const stats = garderie?.statistiques;
 
   return (
-    <section className="hero-section" id="accueil">
-      <div className="container">
-        <div className="row align-items-center">
-          <div className="col-lg-6">
-            <div className="hero-badge">
-              <i className="bi bi-stars"></i>
-              Bienvenue à la garderie
-            </div>
+    <>
+      <section className="hero-pro-section" id="accueil">
+        {/* Dynamic ambient blobs */}
+        <div className="hero-deco-blob hero-deco-blob-1"></div>
+        <div className="hero-deco-blob hero-deco-blob-2"></div>
 
-            <h1 className="hero-title">
-              Un espace de <span className="highlight">bonheur</span> pour
-              vos enfants
-            </h1>
-
-            <p className="hero-description">
-              {garderie ? (
-                garderie.description
-              ) : (
-                <>
-                  Chez <strong>Les Petits Explorateurs</strong>, nous offrons un
-                  environnement sûr, stimulant et bienveillant où chaque enfant
-                  peut grandir, apprendre et s&apos;épanouir à son rythme.
-                </>
-              )}
-            </p>
-
-            <div className="hero-buttons">
-              <a href="#services" className="btn-hero-primary">
-                <i className="bi bi-arrow-right-circle-fill"></i>
-                Découvrir nos services
-              </a>
-              <a href="#contact" className="btn-hero-secondary">
-                <i className="bi bi-telephone-fill"></i>
-                Nous contacter
-              </a>
-            </div>
-
-            <div className="hero-stats">
-              <div className="hero-stat-item">
-                <div className="hero-stat-number">
-                  {stats ? `${stats.enfantsInscrits}+` : "150+"}
-                </div>
-                <div className="hero-stat-label">Enfants inscrits</div>
+        <div className="container position-relative" style={{ zIndex: 1 }}>
+          <div className="row align-items-center g-5">
+            {/* Left Content */}
+            <div className="col-lg-6">
+              <div className="pill-status">
+                <span className="pill-dot"></span>
+                <span>Inscriptions ouvertes — Places limitées 2026/2027</span>
               </div>
-              <div className="hero-stat-item">
-                <div className="hero-stat-number">
-                  {stats ? stats.educateurs : "15"}
-                </div>
-                <div className="hero-stat-label">Éducateurs</div>
-              </div>
-              <div className="hero-stat-item">
-                <div className="hero-stat-number">
-                  {stats ? stats.anneesExperience : "10"}
-                </div>
-                <div className="hero-stat-label">Ans d&apos;expérience</div>
-              </div>
-            </div>
-          </div>
 
-          <div className="col-lg-6">
-            <div className="hero-image-wrapper">
-              <div className="hero-floating-card card-top">
-                <div
-                  className="floating-card-icon"
-                  style={{ background: "var(--gradient-secondary)" }}
+              <h1 className="hero-main-title">
+                L&apos;éveil et le <span className="text-gradient-brand">bonheur</span> de vos enfants au quotidien
+              </h1>
+
+              <p className="hero-subtext">
+                {garderie ? (
+                  garderie.description
+                ) : (
+                  <>
+                    Chez <strong>Les Petits Explorateurs</strong>, nous offrons un environnement chaleureux,
+                    sécurisé et certifié pour permettre à votre enfant de s&apos;épanouir, grandir et découvrir
+                    le monde avec confiance.
+                  </>
+                )}
+              </p>
+
+              <div className="hero-action-group">
+                <a
+                  href="#inscription"
+                  className="btn-cta-main"
+                  data-bs-toggle="modal"
+                  data-bs-target="#modalInscription"
                 >
-                  <i className="bi bi-shield-check"></i>
+                  <i className="bi bi-calendar-check-fill"></i>
+                  Réserver une visite
+                </a>
+                <a href="#services" className="btn-cta-outline">
+                  <i className="bi bi-compass"></i>
+                  Explorer nos services
+                </a>
+              </div>
+
+              {/* Dynamic Stats Row */}
+              <div className="hero-stats-deck">
+                <div className="stat-unit">
+                  <div className="stat-value text-gradient-brand">
+                    {stats ? `${stats.enfantsInscrits}+` : "150+"}
+                  </div>
+                  <div className="stat-caption">Enfants épanouis</div>
                 </div>
-                <div>
-                  <div className="floating-card-text">Sécurité garantie</div>
-                  <div className="floating-card-subtext">
-                    Environnement certifié
+                <div className="stat-unit">
+                  <div className="stat-value" style={{ color: "var(--color-secondary-dark)" }}>
+                    {stats ? stats.educateurs : "15"}
+                  </div>
+                  <div className="stat-caption">Éducateurs qualifiés</div>
+                </div>
+                <div className="stat-unit">
+                  <div className="stat-value" style={{ color: "var(--color-accent-amber)" }}>
+                    {stats ? `${stats.anneesExperience} ans` : "10 ans"}
+                  </div>
+                  <div className="stat-caption">D&apos;excellence</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Visual Image */}
+            <div className="col-lg-6">
+              <div className="hero-visual-card">
+                {/* Floating badge top */}
+                <div className="floating-glass-badge badge-pos-top">
+                  <div className="badge-icon-box green">
+                    <i className="bi bi-shield-fill-check"></i>
+                  </div>
+                  <div>
+                    <div className="badge-title-text">Sécurité Maximale</div>
+                    <div className="badge-subtitle-text">Agrément PMI & Accès sécurisé</div>
                   </div>
                 </div>
-              </div>
 
-              <div className="hero-image-container">
-                <Image
-                  src="/hero-garderie.jpg"
-                  alt="Enfants heureux jouant ensemble à la garderie Les Petits Explorateurs"
-                  width={600}
-                  height={400}
-                  priority
-                  style={{ width: "100%", height: "auto" }}
-                />
-              </div>
-
-              <div className="hero-floating-card card-bottom">
-                <div
-                  className="floating-card-icon"
-                  style={{ background: "var(--gradient-warm)" }}
-                >
-                  <i className="bi bi-heart-fill"></i>
+                <div className="hero-image-frame">
+                  <Image
+                    src="/hero-garderie.jpg"
+                    alt="Espace chaleureux de la garderie Les Petits Explorateurs"
+                    width={700}
+                    height={460}
+                    priority
+                    style={{ width: "100%", height: "auto", display: "block" }}
+                  />
                 </div>
-                <div>
-                  <div className="floating-card-text">
-                    Satisfaction {stats ? `${stats.tauxSatisfaction}%` : "98%"}
+
+                {/* Floating badge bottom */}
+                <div className="floating-glass-badge badge-pos-bottom">
+                  <div className="badge-icon-box warm">
+                    <i className="bi bi-heart-fill"></i>
                   </div>
-                  <div className="floating-card-subtext">
-                    Parents satisfaits
+                  <div>
+                    <div className="badge-title-text">
+                      {stats ? `${stats.tauxSatisfaction}% de satisfaction` : "98% de satisfaction"}
+                    </div>
+                    <div className="badge-subtitle-text">Recommandé par les familles</div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* Trust & Certifications Strip */}
+      <section className="trust-strip">
+        <div className="container">
+          <div className="row g-3 justify-content-center align-items-center text-center">
+            <div className="col-6 col-md-3">
+              <div className="trust-item justify-content-center">
+                <i className="bi bi-patch-check-fill text-success"></i>
+                <span>Agrément officiel PMI</span>
+              </div>
+            </div>
+            <div className="col-6 col-md-3">
+              <div className="trust-item justify-content-center">
+                <i className="bi bi-award-fill text-warning"></i>
+                <span>Norme Qualité ISO 9001</span>
+              </div>
+            </div>
+            <div className="col-6 col-md-3">
+              <div className="trust-item justify-content-center">
+                <i className="bi bi-flower1 text-info"></i>
+                <span>Label Éco-Crèche</span>
+              </div>
+            </div>
+            <div className="col-6 col-md-3">
+              <div className="trust-item justify-content-center">
+                <i className="bi bi-clock-fill text-primary"></i>
+                <span>Ouvert 7h - 19h</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }
