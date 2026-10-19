@@ -1,6 +1,6 @@
-# 🧒 Garderie Les Petits Explorateurs
+# 🧒 Garderie Dar Sghar — دار الصغار
 
-> **Application Web pour une garderie d'enfants** — Un espace de bonheur pour vos enfants.
+> **Application Web pour la garderie d'enfants Dar Sghar — دار الصغار** — Un espace de bonheur pour vos enfants.
 
 ![Next.js](https://img.shields.io/badge/Next.js-16-black?logo=next.js)
 ![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3-purple?logo=bootstrap)
@@ -11,7 +11,7 @@
 
 ## 📋 Présentation du Projet
 
-**Garderie Les Petits Explorateurs** est une application web complète pour une garderie d'enfants. Elle présente les services, les activités et les informations de la garderie à travers une interface moderne, responsive et dynamique.
+**Dar Sghar — دار الصغار** est une application web complète pour une garderie d'enfants. Elle présente les services, les activités et les informations de la garderie à travers une interface moderne, responsive et dynamique.
 
 ### Fonctionnalités principales :
 - 🏠 **Landing page responsive** avec Navbar, Hero et Services
@@ -121,12 +121,12 @@ Retourne les informations générales de la garderie.
 {
   "success": true,
   "data": {
-    "nom": "Les Petits Explorateurs",
+    "nom": "Dar Sghar — دار الصغار",
     "slogan": "Un espace de bonheur pour vos enfants",
-    "description": "Chez Les Petits Explorateurs, nous offrons...",
+    "description": "Chez Dar Sghar — دار الصغار, nous offrons...",
     "adresse": "123 Rue des Étoiles, 75001 Paris, France",
     "telephone": "+33 1 23 45 67 89",
-    "email": "contact@petits-explorateurs.fr",
+    "email": "contact@darsghar.com",
     "horaires": {
       "ouverture": "07:00",
       "fermeture": "19:00",

@@ -11,9 +11,9 @@ const nunito = Nunito({
 });
 
 export const metadata = {
-  title: "Garderie Les Petits Explorateurs - Garderie d'enfants",
+  title: "Dar Sghar — دار الصغار | Garderie d'enfants",
   description:
-    "Garderie Les Petits Explorateurs offre un environnement sûr, stimulant et bienveillant pour le développement de vos enfants. Découvrez nos services de garde, activités éducatives et programmes d'éveil.",
+    "Garderie Dar Sghar — دار الصغار offre un environnement sûr, stimulant et bienveillant pour le développement de vos enfants. Découvrez nos services de garde, activités éducatives et programmes d'éveil.",
 };
 
 export default function RootLayout({ children }) {

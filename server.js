@@ -13,13 +13,13 @@ app.use(express.json());
 // ==========================================
 
 const garderieInfo = {
-  nom: "Les Petits Explorateurs",
+  nom: "Dar Sghar — دار الصغار",
   slogan: "Un espace de bonheur pour vos enfants",
   description:
-    "Chez Les Petits Explorateurs, nous offrons un environnement sûr, stimulant et bienveillant où chaque enfant peut grandir, apprendre et s'épanouir à son rythme. Notre équipe de professionnels qualifiés accompagne chaque enfant dans son développement personnel.",
+    "Chez Dar Sghar — دار الصغار, nous offrons un environnement sûr, stimulant et bienveillant où chaque enfant peut grandir, apprendre et s'épanouir à son rythme. Notre équipe de professionnels qualifiés accompagne chaque enfant dans son développement personnel.",
   adresse: "123 Rue des Étoiles, 75001 Paris, France",
   telephone: "+33 1 23 45 67 89",
-  email: "contact@petits-explorateurs.fr",
+  email: "contact@darsghar.com",
   horaires: {
     ouverture: "07:00",
     fermeture: "19:00",
@@ -180,7 +180,7 @@ app.get("/api/activites", (req, res) => {
 // Route racine
 app.get("/", (req, res) => {
   res.json({
-    message: "API Garderie Les Petits Explorateurs",
+    message: "API Garderie Dar Sghar — دار الصغار",
     version: "1.0.0",
     endpoints: [
       "GET /api/garderie",

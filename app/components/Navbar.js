@@ -24,7 +24,7 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const nomGarderie = garderie ? garderie.nom : "Les Petits Explorateurs";
+  const nomGarderie = garderie ? garderie.nom : "Dar Sghar — دار الصغار";
 
   return (
     <div className="navbar-wrapper">

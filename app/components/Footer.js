@@ -17,10 +17,10 @@ export default function Footer() {
   }, []);
 
   const info = garderie || {
-    nom: "Les Petits Explorateurs",
-    adresse: "123 Rue des Étoiles, 75001 Paris, France",
-    telephone: "+33 1 23 45 67 89",
-    email: "contact@petits-explorateurs.fr",
+    nom: "Dar Sghar — دار الصغار",
+    adresse: "123 Rue Hasnaoui, 2260 Degche,Tozeur",
+    telephone: "+216 29 323 797 ",
+    email: "contact@darsghar.com",
     horaires: {
       ouverture: "07:00",
       fermeture: "19:00",

@@ -44,7 +44,7 @@ export default function Hero() {
                   garderie.description
                 ) : (
                   <>
-                    Chez <strong>Les Petits Explorateurs</strong>, nous offrons un environnement chaleureux,
+                    Chez <strong>Dar Sghar — دار الصغار</strong>, nous offrons un environnement chaleureux,
                     sécurisé et certifié pour permettre à votre enfant de s&apos;épanouir, grandir et découvrir
                     le monde avec confiance.
                   </>
@@ -107,7 +107,7 @@ export default function Hero() {
                 <div className="hero-image-frame">
                   <Image
                     src="/hero-garderie.jpg"
-                    alt="Espace chaleureux de la garderie Les Petits Explorateurs"
+                    alt="Espace chaleureux de la garderie Dar Sghar — دار الصغار"
                     width={700}
                     height={460}
                     priority

@@ -52,7 +52,7 @@ export default function RegistrationModal() {
                 <h5 className="modal-title fw-bold mb-0" id="modalInscriptionLabel">
                   Demande d&apos;inscription
                 </h5>
-                <small className="text-white-50">Les Petits Explorateurs — Inscription & Visite</small>
+                <small className="text-white-50">Dar Sghar — دار الصغار — Inscription & Visite</small>
               </div>
             </div>
             <button
